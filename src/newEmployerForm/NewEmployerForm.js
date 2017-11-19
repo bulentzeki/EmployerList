@@ -2,18 +2,47 @@ import React, { Component } from 'react';
 import './NewEmployerForm.css';
 
 class NewEmployerForm extends Component {
-  componentDidMount() {
-    console.log("NewEmployerForm componentDidMount");
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      title: ""
+    };
+    this.submitHandler = this.submitHandler.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillUnmount() {
-    console.log("NewEmployerForm componentWillUnmount");
+  submitHandler(e) {
+    // add validations
+    e.preventDefault();
+    this.props.addNewEmployer(this.state.name, this.state.email, this.state.title);
+  }
+
+  handleChange(e) {
+    const inputName = e.target.name;
+    this.setState({
+      [inputName]: e.target.value
+    });
   }
 
   render() {
+    console.log("render", this.state);
     return (
       <form className="new-employer-form">
-        <button onClick={this.props.addNewEmployer}>Add Dummy Data</button>
+        <label className="employer-input">
+          <div className="input-label">Name:</div>
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+        </label>
+        <label className="employer-input">
+          <div className="input-label">Email:</div>
+          <input type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+        </label>
+        <label className="employer-input">
+          <div className="input-label">Title:</div>
+          <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
+        </label>
+        <button className="submit-btn" onClick={this.submitHandler}>Add Employer</button>
       </form>
     );
   }

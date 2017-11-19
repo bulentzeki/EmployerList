@@ -11,37 +11,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employerData: EmployersData,
-      isAddBtnVisible: true
+      employerData: EmployersData
     };
     this.addNewEmployer = this.addNewEmployer.bind(this);
   }
 
-  addNewEmployer(e) {
-    e.preventDefault();
+  addNewEmployer(name, email, title) {
     this.setState(function(prevState, props) {
       const dummyEmployerData = {
-        name: "x",
-        title: "x",
-        email: "x@mail.com",
+        name,
+        title,
+        email,
         uuid: uuidv1()
       };
       const employerData = [dummyEmployerData, ...prevState.employerData];
 
       return {
-        employerData: employerData,
-        isAddBtnVisible: false
+        employerData: employerData
       };
     });
   }
 
-  // Conditional rendering
-  // Ternary expression?
-
   render() {
     return (
       <div className="app">
-        {this.state.isAddBtnVisible ? <NewEmployerForm addNewEmployer={this.addNewEmployer}/> : null}
+        <NewEmployerForm addNewEmployer={this.addNewEmployer}/>
         <EmployerList data={this.state.employerData}/>
       </div>
     );

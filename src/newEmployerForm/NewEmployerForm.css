@@ -1,3 +1,24 @@
 .new-employer-form {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.new-employer-form .employer-input {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.new-employer-form .employer-input .input-label {
+    width: 150px;
+}
+
+.new-employer-form .employer-input input{
+    flex: 1;
+}
+
+.new-employer-form .submit-btn {
+    width: 140px;
+    margin-top: 30px;
 }
