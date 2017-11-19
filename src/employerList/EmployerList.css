@@ -1,0 +1,13 @@
+.employer-list {
+    flex: 1;
+    background-color: grey;
+    padding: 10px;
+}
+
+
+.employer-row {
+    display: flex;
+    background-color: white;
+    padding: 5px;
+    border-bottom: 2px dotted grey;
+}
