@@ -3,19 +3,18 @@ import './EmployerList.css';
 
 class EmployerList extends Component {
   render() {
-
-    console.log("Data", this.props.data);
     return (
       <div className="employer-list">
         {
           this.props.data.map((employer) => {
-              return (
-                <div className="employer-row">
-                  {employer.name}
-                </div>
-              )
-            }
-          )}
+            return (
+              <div key={employer.uuid} className="employer-row">
+                <div className="employer-column">{employer.name}</div>
+                <div className="employer-column">{employer.title}</div>
+              </div>
+            )
+          })
+        }
       </div>
     );
   }
