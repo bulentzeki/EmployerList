@@ -11,35 +11,37 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employerData: EmployersData
+      employerData: EmployersData,
+      isAddBtnVisible: true
     };
-    this.addNewEmployer = this.addNewEmployer.bind(this); //bind?
+    this.addNewEmployer = this.addNewEmployer.bind(this);
   }
 
   addNewEmployer(e) {
-    e.preventDefault(); // what does this do?
-    this.setState(function(prevState, props) { // in our case props not needed yet
+    e.preventDefault();
+    this.setState(function(prevState, props) {
       const dummyEmployerData = {
         name: "x",
         title: "x",
         email: "x@mail.com",
         uuid: uuidv1()
       };
-      const employerData = [dummyEmployerData, ...prevState.employerData]; // why immutable?
+      const employerData = [dummyEmployerData, ...prevState.employerData];
 
       return {
-        employerData: employerData
+        employerData: employerData,
+        isAddBtnVisible: false
       };
     });
   }
 
-  // passing App component's state to EmployerList
-  // passing App component's addNewEmployer fuction to NewEmployerForm
+  // Conditional rendering
+  // Ternary expression?
 
   render() {
     return (
       <div className="app">
-        <NewEmployerForm addNewEmployer={this.addNewEmployer}/>
+        {this.state.isAddBtnVisible ? <NewEmployerForm addNewEmployer={this.addNewEmployer}/> : null}
         <EmployerList data={this.state.employerData}/>
       </div>
     );
