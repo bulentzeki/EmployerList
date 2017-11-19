@@ -7,7 +7,15 @@ class EmployerList extends Component {
     console.log("Data", this.props.data);
     return (
       <div className="employer-list">
-        employer list
+        {
+          this.props.data.map((employer) => {
+              return (
+                <div className="employer-row">
+                  {employer.name}
+                </div>
+              )
+            }
+          )}
       </div>
     );
   }

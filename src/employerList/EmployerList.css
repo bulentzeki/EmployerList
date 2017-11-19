@@ -5,7 +5,7 @@
 }
 
 
-.employer-row {
+.employer-list .employer-row {
     display: flex;
     background-color: white;
     padding: 5px;
