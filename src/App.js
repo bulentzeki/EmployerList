@@ -24,6 +24,7 @@ class App extends Component {
 
 
     this.addNewEmployer = this.addNewEmployer.bind(this);
+    this.removeEmployer = this.removeEmployer.bind(this);
   }
 
   addNewEmployer(name, email, title) {
@@ -44,11 +45,23 @@ class App extends Component {
     });
   }
 
+  removeEmployer(employerUUID) {
+    this.setState(function(prevState, props) {
+      const employerData = prevState.employerData.filter((employer) => employer.uuid !== employerUUID);
+
+      localStorage.setItem("employerData", JSON.stringify(employerData));
+
+      return {
+        employerData: employerData
+      };
+    });
+  }
+
   render() {
     return (
       <div className="app">
         <NewEmployerForm addNewEmployer={this.addNewEmployer}/>
-        <EmployerList data={this.state.employerData}/>
+        <EmployerList data={this.state.employerData} removeEmployer={this.removeEmployer}/>
       </div>
     );
   }

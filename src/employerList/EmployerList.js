@@ -41,6 +41,9 @@ class EmployerList extends Component {
               <div key={employer.uuid} className="employer-row">
                 <div className="employer-column">{employer.name}</div>
                 <div className="employer-column">{employer.title}</div>
+                <div className="employer-column">
+                  <button onClick={() => this.props.removeEmployer(employer.uuid)}>Remove</button>
+                </div>
               </div>
             )
           })
