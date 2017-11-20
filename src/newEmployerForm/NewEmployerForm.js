@@ -14,7 +14,6 @@ class NewEmployerForm extends Component {
   }
 
   submitHandler(e) {
-    // add validations
     e.preventDefault();
     this.props.addNewEmployer(this.state.name, this.state.email, this.state.title);
   }
@@ -27,7 +26,6 @@ class NewEmployerForm extends Component {
   }
 
   render() {
-    console.log("render", this.state);
     return (
       <form className="new-employer-form">
         <label className="employer-input">

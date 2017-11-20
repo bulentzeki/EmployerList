@@ -15,3 +15,18 @@
 .employer-list .employer-column {
     flex: 1
 }
+
+.employer-list .filter-row {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+}
+
+.employer-list .filter-row .filter-input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.employer-list .filter-row .filter-btn {
+    width: 100px;
+}
