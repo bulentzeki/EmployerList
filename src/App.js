@@ -10,9 +10,19 @@ import EmployersData from "./Constants";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      employerData: EmployersData
-    };
+    if (!localStorage.getItem("employerData")) {
+      localStorage.setItem("employerData", JSON.stringify(EmployersData));
+      this.state = {
+        employerData: EmployersData
+      };
+    } else {
+      this.state = {
+        employerData: JSON.parse(localStorage.getItem("employerData"))
+      };
+    }
+
+
+
     this.addNewEmployer = this.addNewEmployer.bind(this);
   }
 
@@ -25,6 +35,8 @@ class App extends Component {
         uuid: uuidv1()
       };
       const employerData = [dummyEmployerData, ...prevState.employerData];
+
+      localStorage.setItem("employerData", JSON.stringify(employerData));
 
       return {
         employerData: employerData

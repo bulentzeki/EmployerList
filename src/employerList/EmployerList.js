@@ -28,8 +28,6 @@ class EmployerList extends Component {
       return employer.name.startsWith(this.state.filterText);
     });
 
-    console.log("EmployerList render");
-
     return (
       <div className="employer-list">
         <div className="filter-row">
